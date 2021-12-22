@@ -65,24 +65,17 @@ function updateDirection(event)
 }
 
 // Método responsável por mudar a direção da cobra com base no botão clicado:
-function updateDirectionButton(newDirection)
+function updateDirectionButton(opost, newDirection)
 {
-    if ( newDirection == 'up' && direction != 'down' )
+    direction = newDirection;
+    let buttons = document.querySelectorAll('div button');
+    
+    buttons.forEach(button => 
     {
-        direction = 'up';
-    }
-    else if ( newDirection == 'down' && direction != 'up' )
-    {
-        direction = 'down';
-    }
-    else if ( newDirection == 'left' && direction != 'right' )
-    {
-        direction = 'left';
-    }
-    else if ( newDirection == 'right' && direction != 'left' )
-    {
-        direction = 'right';
-    }
+        button.classList.remove('disabled');
+    });
+    
+    buttons[opost].classList.add('disabled');
 }
 
 // Método responsável por impedir que a cobra desapareça da tela após ultrapassar os limites da tela:
